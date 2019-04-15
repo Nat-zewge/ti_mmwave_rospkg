@@ -30,4 +30,6 @@
   
 <node pkg="ti_mmwave_rospkg" type="mmWaveQuickConfig" name="mmWaveQuickConfig" args="$(find ti_mmwave_rospkg)/cfg/1443_3d_sdk2.cfg" output="screen" />
 
+<node pkg="ti_mmwave_rospkg" type="point_cloud_lab" name="point_cloud_lab" output="screen" />
+
 </launch>

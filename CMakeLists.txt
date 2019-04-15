@@ -15,6 +15,8 @@ find_package(catkin REQUIRED COMPONENTS
   sensor_msgs
   message_generation
   pluginlib
+  pcl_ros
+  eigen_conversions
 )
 
 find_package(Boost REQUIRED )
@@ -116,6 +118,12 @@ catkin_package(
   LIBRARIES mmwave
   #CATKIN_DEPENDS nodelet roscpp serial std_msgs
   DEPENDS system_lib
+  roscpp
+  std_msgs
+  pcl_ros
+  eigen_conversions
+  tf
+  tf_conversions
 )
 
 ###########
@@ -144,6 +152,7 @@ add_definitions(${PCL_DEFINITIONS})
    src/mmWaveDataHdl.cpp
    src/mmWaveCommSrv.cpp
    src/DataHandlerClass.cpp
+  
  )
 
 ## Add cmake target dependencies of the library
@@ -215,6 +224,10 @@ add_dependencies(${PROJECT_NAME} ${catkin_EXPORTED_TARGETS} mmwave ${serial_EXPO
 add_executable(mmWaveQuickConfig src/mmWaveQuickConfig.cpp)
 target_link_libraries(mmWaveQuickConfig ${catkin_LIBRARIES} mmwave)
 add_dependencies(mmWaveQuickConfig ${catkin_EXPORTED_TARGETS} mmwave)
+
+add_executable(point_cloud_lab src/point_cloud_lab.cpp)
+target_link_libraries(point_cloud_lab ${catkin_LIBRARIES})
+
 
 #############
 ## Testing ##
